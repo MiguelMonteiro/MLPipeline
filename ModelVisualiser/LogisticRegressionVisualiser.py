@@ -2,6 +2,7 @@ from IPython.display import display, HTML
 import pandas as pd
 import numpy as np
 
+
 class LogisticRegressionVisualiser(object):
     def __init__(self, model, feature_names):
         self.model = model

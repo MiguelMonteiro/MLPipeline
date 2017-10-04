@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 from sklearn import metrics
 from scipy import interp
-from RandomVariable import RandomVariable
+from .RandomVariable import RandomVariable
 
 
 class Curve(object):

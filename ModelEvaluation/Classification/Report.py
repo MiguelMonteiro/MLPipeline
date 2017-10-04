@@ -5,18 +5,18 @@ decimal_places = 3
 def class_balance_report(y, class_names):
     classes, counts = np.unique(y, return_counts=True)
     class_percentages = counts.astype(float) / np.sum(counts) * 100
-    print 'The class balance is:'
+    print('The class balance is:')
     for c in classes:
-        print 'Class ' + class_names[c] + ' (' + repr(c) + ')' + ': %.2f%%' % class_percentages[c]
+        print('Class ' + class_names[c] + ' (' + repr(c) + ')' + ': %.2f%%' % class_percentages[c])
 
 
 def print_dashed_line():
-    print '------------------------------------------------------'
+    print('------------------------------------------------------')
 
 
 def accuracy_report(train_evaluation, valid_evaluation):
-    print 'The training accuracy was ' + train_evaluation.accuracy_to_string(decimal_places)
-    print 'The validation accuracy was ' + valid_evaluation.accuracy_to_string(decimal_places)
+    print('The training accuracy was ' + train_evaluation.accuracy_to_string(decimal_places))
+    print('The validation accuracy was ' + valid_evaluation.accuracy_to_string(decimal_places))
 
 
 def precision_recall_f1score_support_report(evaluation):
@@ -30,14 +30,14 @@ def precision_recall_f1score_support_report(evaluation):
         for i in range(len(evaluation.class_names)):
             class_name = evaluation.class_names[i]
             var = d[key][i]
-            print 'The ' + key + ' for class ' + class_name + ' is ' + var
+            print('The ' + key + ' for class ' + class_name + ' is ' + var)
         print_dashed_line()
 
 
 def auc_report_binary(train_evaluation, valid_evaluation):
 
-    print 'The AUC of the training set is ' + train_evaluation.roc_curve.area_to_string(decimal_places)
-    print 'The AUC of the validation set is ' + valid_evaluation.roc_curve.area_to_string(decimal_places)
+    print('The AUC of the training set is ' + train_evaluation.roc_curve.area_to_string(decimal_places))
+    print('The AUC of the validation set is ' + valid_evaluation.roc_curve.area_to_string(decimal_places))
 
 
 def auc_report_multiclass(train_evaluation, valid_evaluation):
@@ -46,12 +46,12 @@ def auc_report_multiclass(train_evaluation, valid_evaluation):
     valid_auc_dict_strings = {key: item.area_to_string(decimal_places) for key, item in
                               valid_evaluation.roc_curve.iteritems()}
     for class_name in train_evaluation.class_names:
-        print 'The training AUC for class ' + class_name + ' is ' + train_auc_dict_strings[class_name]
-        print 'The validation AUC for class ' + class_name + ' is ' + valid_auc_dict_strings[class_name]
+        print('The training AUC for class ' + class_name + ' is ' + train_auc_dict_strings[class_name])
+        print('The validation AUC for class ' + class_name + ' is ' + valid_auc_dict_strings[class_name])
         print_dashed_line()
     for key in ['micro', 'macro']:
-        print 'The ' + key + ' average training AUC for class ' + class_name + ' is ' + train_auc_dict_strings[key]
-        print 'The ' + key + ' average validation AUC for class ' + class_name + ' is ' + valid_auc_dict_strings[key]
+        print('The ' + key + ' average training AUC for class ' + class_name + ' is ' + train_auc_dict_strings[key])
+        print('The ' + key + ' average validation AUC for class ' + class_name + ' is ' + valid_auc_dict_strings[key])
         print_dashed_line()
 
 
@@ -64,13 +64,13 @@ def auc_report(train_evaluation, valid_evaluation):
 def long_report(y, train_evaluation, valid_evaluation):
     print_dashed_line()
     print_dashed_line()
-    print 'EVALUATION:'
+    print('EVALUATION:')
     class_balance_report(y, train_evaluation.class_names)
     print_dashed_line()
 
     accuracy_report(train_evaluation, valid_evaluation)
     print_dashed_line()
-    print 'For the validation set:'
+    print('For the validation set:')
     precision_recall_f1score_support_report(valid_evaluation)
 
     auc_report(train_evaluation, valid_evaluation)
@@ -83,7 +83,7 @@ def long_report(y, train_evaluation, valid_evaluation):
 
 
 def short_report(y, train_evaluation, valid_evaluation):
-    print 'EVALUATION:'
+    print('EVALUATION:')
     print_dashed_line()
     accuracy_report(train_evaluation, valid_evaluation)
     print_dashed_line()

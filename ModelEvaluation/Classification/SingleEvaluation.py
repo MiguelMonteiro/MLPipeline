@@ -1,8 +1,8 @@
 from sklearn import metrics
 import numpy as np
-from ReportPlots import plot_confusion_matrix, CurvePlot
-from Curves import get_roc_curve, get_precision_recall_curve, get_roc_curve_dict, get_precision_recall_curve_dict
-from EvaluationBaseClasses import BinaryEvaluation, MultiClassEvaluation
+from .ReportPlots import plot_confusion_matrix, CurvePlot
+from .Curves import get_roc_curve, get_precision_recall_curve, get_roc_curve_dict, get_precision_recall_curve_dict
+from .EvaluationBaseClasses import BinaryEvaluation, MultiClassEvaluation
 
 
 def np_array_to_string(array, decimal_places):

@@ -19,7 +19,7 @@ class ModelSearcher(object):
     def search(self, report=False):
         for param in list(ParameterGrid(self.param_grid)):
             if report:
-                print param
+                print(param)
             model = self.model(**param)
             self.pipeline.model = model
             train_evaluation, valid_evaluation = self.pipeline.run_pipeline(report=False)

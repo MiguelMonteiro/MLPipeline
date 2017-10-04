@@ -1,9 +1,8 @@
-
 import numpy as np
-from RandomVariable import RandomVariable
-from ReportPlots import plot_confusion_matrix, CurvePlotCrossValidation
-from Curves import random_variable_from_array_of_curves
-from EvaluationBaseClasses import BinaryEvaluation, MultiClassEvaluation
+from .RandomVariable import RandomVariable
+from .ReportPlots import plot_confusion_matrix, CurvePlotCrossValidation
+from .Curves import random_variable_from_array_of_curves
+from .EvaluationBaseClasses import BinaryEvaluation, MultiClassEvaluation
 
 
 class CrossValidationEvaluation(object):
