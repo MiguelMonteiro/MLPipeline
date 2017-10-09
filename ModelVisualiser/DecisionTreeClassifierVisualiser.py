@@ -1,6 +1,5 @@
 from IPython.display import display, Image
 import pydotplus
-import pandas as pd
 from sklearn import tree
 
 

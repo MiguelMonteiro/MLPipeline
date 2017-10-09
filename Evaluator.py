@@ -17,14 +17,14 @@ class Evaluator(object):
         assert len(class_names) == n_classes
 
         if len(class_names) == 2:
-            from ModelEvaluation import SingleEvaluationBinary
-            from ModelEvaluation import CrossValidationEvaluationBinary
+            from .ModelEvaluation import SingleEvaluationBinary
+            from .ModelEvaluation import CrossValidationEvaluationBinary
             self.SingleEvaluation = SingleEvaluationBinary
             self.CrossValidationEvaluation = CrossValidationEvaluationBinary
 
         if len(class_names) > 2:
-            from ModelEvaluation import SingleEvaluationMultiClass
-            from ModelEvaluation import CrossValidationEvaluationMultiClass
+            from .ModelEvaluation import SingleEvaluationMultiClass
+            from .ModelEvaluation import CrossValidationEvaluationMultiClass
             self.SingleEvaluation = SingleEvaluationMultiClass
             self.CrossValidationEvaluation = CrossValidationEvaluationMultiClass
 

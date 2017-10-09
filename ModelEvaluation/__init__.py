@@ -1,3 +1,1 @@
-from Classification.SingleEvaluation import SingleEvaluationBinary, SingleEvaluationMultiClass
-from Classification.CrossValidationEvaluation import CrossValidationEvaluationBinary, \
-    CrossValidationEvaluationMultiClass
+

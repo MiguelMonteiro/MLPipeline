@@ -3,8 +3,8 @@ from sklearn.model_selection import train_test_split, KFold, LeaveOneOut
 from sklearn.preprocessing import StandardScaler
 from sklearn.utils import shuffle
 
-from Evaluator import Evaluator, get_pred_and_score
-from ModelEvaluation.Classification.Report import short_report
+from .Evaluator import Evaluator, get_pred_and_score
+from .ModelEvaluation.Classification.Report import short_report
 
 
 class OnePassPipeline(object):

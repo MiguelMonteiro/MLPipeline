@@ -1,7 +1,6 @@
 # coding=utf-8
 from itertools import cycle
 from .ReportPlots import plot_roc_curve, plot_precision_recall_curve
-from abc import ABCMeta
 
 
 class Evaluation(object):

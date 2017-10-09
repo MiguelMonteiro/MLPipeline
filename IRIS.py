@@ -1,7 +1,7 @@
 import numpy as np
 from sklearn import datasets, linear_model
-from ModelEvaluation.Classification.Report import long_report
-from Pipelines import OnePassPipeline, KFoldCrossValidationPipeline, LeaveOneOutCrossValidationPipeline
+from .ModelEvaluation.Classification.Report import long_report
+from .Pipelines import OnePassPipeline, KFoldCrossValidationPipeline, LeaveOneOutCrossValidationPipeline
 
 data = datasets.load_iris()
 
