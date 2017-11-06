@@ -1,7 +1,7 @@
 import numpy as np
 from .RandomVariable import RandomVariable
 from .ReportPlots import plot_confusion_matrix, CurvePlotCrossValidation
-from .Curves import random_variable_from_array_of_curves
+from .Curves import make_cross_validation_roc_curve, make_cross_validation_precision_recall_curve
 from .EvaluationBaseClasses import BinaryEvaluation, MultiClassEvaluation
 
 
@@ -42,9 +42,9 @@ class CrossValidationEvaluationBinary(CrossValidationEvaluation, BinaryEvaluatio
     def __init__(self, array_of_evaluations):
         super(CrossValidationEvaluationBinary, self).__init__(array_of_evaluations)
 
-        self.roc_curve = random_variable_from_array_of_curves(
+        self.roc_curve = make_cross_validation_roc_curve(
             [evaluation.roc_curve for evaluation in array_of_evaluations])
-        self.precision_recall_curve = random_variable_from_array_of_curves(
+        self.precision_recall_curve = make_cross_validation_precision_recall_curve(
             [evaluation.precision_recall_curve for evaluation in array_of_evaluations])
 
 
@@ -55,9 +55,9 @@ class CrossValidationEvaluationMultiClass(CrossValidationEvaluation, MultiClassE
         self.roc_curve = {}
         self.precision_recall_curve = {}
         for key in keys:
-            self.roc_curve[key] = random_variable_from_array_of_curves(
+            self.roc_curve[key] = make_cross_validation_roc_curve(
                 [evaluation.roc_curve[key] for evaluation in array_of_evaluations])
-            self.precision_recall_curve[key] = random_variable_from_array_of_curves(
+            self.precision_recall_curve[key] = make_cross_validation_precision_recall_curve(
                 [evaluation.precision_recall_curve[key] for evaluation in array_of_evaluations])
 
 

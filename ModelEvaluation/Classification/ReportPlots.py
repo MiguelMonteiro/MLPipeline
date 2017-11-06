@@ -42,7 +42,7 @@ def plot_roc_curve(roc_plots):
     plt.xlabel('False Positive Rate')
     plt.ylabel('True Positive Rate')
     plt.legend(loc="lower right")
-    plt.show(block=True)
+    plt.show()
 
 
 def plot_precision_recall_curve(plots):
@@ -57,7 +57,7 @@ def plot_precision_recall_curve(plots):
     plt.xlabel('Recall')
     plt.ylabel('Precision')
     plt.legend(loc="lower right")
-    plt.show(block=True)
+    plt.show()
 
 
 def plot_confusion_matrix(cm, cm_string, class_names, cmap=plt.cm.Blues):
@@ -80,5 +80,5 @@ def plot_confusion_matrix(cm, cm_string, class_names, cmap=plt.cm.Blues):
     plt.tight_layout()
     plt.ylabel('True label')
     plt.xlabel('Predicted label')
-    plt.show(block=True)
+    plt.show()
 

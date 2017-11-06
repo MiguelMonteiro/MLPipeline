@@ -125,16 +125,31 @@ def get_precision_recall_curve_dict(y_true, y_score, class_names):
     return curve_dict
 
 
-def random_variable_from_array_of_curves(array_of_curves):
+def make_cross_validation_roc_curve(array_of_curves):
     base_x = np.linspace(0, 1, 101)
 
     y = np.array([interp(base_x, curve.x, curve.y) for curve in array_of_curves])
     y[:, 0] = 0
     y = RandomVariable(y)
-
-    thresholds = np.array([interp(base_x, curve.y, curve.thresholds) for curve in array_of_curves])
+    # use to have curve.y as second argument
+    thresholds = np.array([interp(base_x, curve.x, curve.thresholds) for curve in array_of_curves])
     thresholds = RandomVariable(thresholds)
 
     area = RandomVariable([curve.area for curve in array_of_curves])
-    curve_class = array_of_curves[0].__class__
-    return curve_class(base_x, y, thresholds, area)
+    return ROCCurve(base_x, y, thresholds, area)
+
+
+def make_cross_validation_precision_recall_curve(array_of_curves):
+    base_x = np.linspace(0, 1, 101)
+
+    y = np.array([interp(base_x, np.flip(curve.x, 0), np.flip(curve.y, 0)) for curve in array_of_curves])
+    y[:, 0] = 0
+    y = RandomVariable(y)
+    # use to have curve.y as second argument
+    thresholds = np.array([interp(base_x, np.flip(curve.x, 0), np.flip(curve.thresholds, 0))
+                           for curve in array_of_curves])
+    thresholds = RandomVariable(thresholds)
+
+    area = RandomVariable([curve.area for curve in array_of_curves])
+
+    return PrecisionRecallCurve(base_x, y, thresholds, area)
